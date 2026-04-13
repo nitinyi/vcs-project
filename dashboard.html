@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+        <h2>Course Content System</h2>
+
+        <h3 id="welcome"></h3>
+
+        <div id="uploadSection">
+            <input type="file" id="fileInput">
+            <button onclick="upload()">Upload New Version</button>
+        </div>
+
+        <h3>All File Versions</h3>
+        <ul id="fileList"></ul>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        let role = localStorage.getItem("role");
+        let user = localStorage.getItem("user");
+
+        document.getElementById("welcome").innerText = "Welcome " + user + " (" + role + ")";
+
+
+        if (role === "student") {
+            document.getElementById("uploadSection").style.display = "none";
+        }
+
+
+        let files = JSON.parse(localStorage.getItem("files")) || [];
+
+
+        function upload() {
+            let fileInput = document.getElementById("fileInput");
+            let file = fileInput.files[0];
+
+            if (!file) {
+                alert("Please select a file");
+                return;
+            }
+
+            let reader = new FileReader();
+
+            reader.onload = function (e) {
+                let existing = files.filter(f => f.name === file.name);
+                let version = existing.length + 1;
+
+                let newFile = {
+                    name: file.name,
+                    version: version,
+                    user: user,
+                    date: new Date().toLocaleString(),
+                    data: e.target.result
+                };
+
+                files.push(newFile);
+                localStorage.setItem("files", JSON.stringify(files));
+
+                displayFiles();
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+
+        function displayFiles() {
+            let list = document.getElementById("fileList");
+            list.innerHTML = "";
+
+            files.forEach((file, index) => {
+                let li = document.createElement("li");
+
+                li.innerHTML = `
+            <b>${file.name}</b> (v${file.version})<br>
+            Uploaded by: ${file.user}<br>
+            ${file.date}<br>
+            <button onclick="downloadFile(${index})">Download</button>
+        `;
+
+                list.appendChild(li);
+            });
+        }
+
+
+        function downloadFile(index) {
+            let file = files[index];
+
+            let a = document.createElement("a");
+            a.href = file.data;
+            a.download = file.name;
+            a.click();
+        }
+
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "index.html";
+        }
+
+
+        displayFiles();
+    </script>
+
+</body>
+
+</html>
