@@ -15,6 +15,7 @@
 
         <div id="uploadSection">
             <input type="file" id="fileInput">
+            <input type="text" id="changeMsg" placeholder="Enter commit message">
             <button onclick="upload()">Upload New Version</button>
         </div>
 
@@ -42,9 +43,14 @@
         function upload() {
             let fileInput = document.getElementById("fileInput");
             let file = fileInput.files[0];
+            let changeMsg = document.getElementById("changeMsg").value;
 
             if (!file) {
                 alert("Please select a file");
+                return;
+            }
+            if (changeMsg === "") {
+                alert("Please enter commit message");
                 return;
             }
 
@@ -59,6 +65,7 @@
                     version: version,
                     user: user,
                     date: new Date().toLocaleString(),
+                    message: changeMsg,
                     data: e.target.result
                 };
 
@@ -66,6 +73,8 @@
                 localStorage.setItem("files", JSON.stringify(files));
 
                 displayFiles();
+                document.getElementById("fileInput").value = "";
+                document.getElementById("changeMsg").value = "";
             };
 
             reader.readAsDataURL(file);
@@ -80,11 +89,12 @@
                 let li = document.createElement("li");
 
                 li.innerHTML = `
-            <b>${file.name}</b> (v${file.version})<br>
-            Uploaded by: ${file.user}<br>
-            ${file.date}<br>
-            <button onclick="downloadFile(${index})">Download</button>
-        `;
+                    <b>${file.name}</b> (v${file.version})<br>
+                    📝 ${file.message}<br>
+                    Uploaded by: ${file.user}<br>
+                    ${file.date}<br>
+                    <button onclick="downloadFile(${index})">Download</button>
+                `;
 
                 list.appendChild(li);
             });
@@ -102,10 +112,10 @@
 
 
         function logout() {
-            localStorage.clear();
+            localStorage.removeItem("user");
+            localStorage.removeItem("role");
             window.location.href = "index.html";
         }
-
 
         displayFiles();
     </script>
