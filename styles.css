@@ -1,4 +1,4 @@
-/* ================= RESET ================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -6,131 +6,96 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* ================= BODY ================= */
+/* BODY BACKGROUND */
 body {
   height: 100vh;
-  background: radial-gradient(circle at top, #1e1b4b, #020617);
-  color: white;
-}
-
-/* ================= TOPBAR ================= */
-.topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 30px;
-  z-index: 1000;
 }
 
-/* ================= MAIN ================= */
-.main {
+/* MAIN CONTAINER */
+.login-container {
   display: flex;
-  height: 100vh;
-  margin-top: 60px;
+  width: 900px;
+  max-width: 95%;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
-/* ================= SIDEBAR ================= */
-.sidebar {
-  width: 240px;
-  background: linear-gradient(180deg, #1e293b, #020617);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+/* LEFT SIDE */
+.login-box {
+  width: 50%;
+  padding: 50px;
 }
 
-.sidebar h2 {
-  margin-bottom: 20px;
+.login-box h1 {
+  color: #7c3aed;
+  margin-bottom: 10px;
 }
 
-.sidebar p {
-  color: #cbd5f5;
-}
-
-/* LOGOUT */
-.logout-btn {
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  background: #ef4444;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.logout-btn:hover {
-  background: #dc2626;
-}
-
-/* ================= CONTENT ================= */
-.content {
-  flex: 1;
-  padding: 30px;
-}
-
-/* ================= FILE CARD ================= */
-.file-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-  padding: 20px;
-  border-radius: 15px;
-  margin-top: 20px;
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: 0.3s;
-  animation: fadeIn 0.5s ease;
-}
-
-.file-card:hover {
-  transform: translateY(-6px) scale(1.01);
-}
-
-/* ================= BUTTON ================= */
-.download-btn {
-  margin-top: 10px;
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: none;
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.download-btn:hover {
-  transform: scale(1.05);
-}
-
-/* ================= UPLOAD BOX ================= */
-.upload-box {
-  margin-top: 30px;
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.05);
+.login-box p {
+  color: gray;
+  margin-bottom: 25px;
 }
 
 /* INPUTS */
-.upload-box input {
+.login-box input,
+.login-box select {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: none;
+  padding: 14px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.3s;
 }
 
-/* ================= ANIMATION ================= */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+.login-box input:focus,
+.login-box select:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 8px rgba(124,58,237,0.3);
+}
+
+/* BUTTON */
+.login-box button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ec4899, #7c3aed);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-box button:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+/* RIGHT IMAGE */
+.login-image {
+  width: 50%;
+  background: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f") center/cover;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  .login-container {
+    flex-direction: column;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .login-box {
+    width: 100%;
+  }
+
+  .login-image {
+    height: 200px;
+    width: 100%;
   }
 }
