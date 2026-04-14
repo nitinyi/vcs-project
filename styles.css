@@ -18,9 +18,9 @@ body {
 /* CARD */
 .login-card {
   display: flex;
-  width: 750px;
-  max-width: 700px; /* 👈 ADD THIS LINE */
-  height: 420px;
+  width: 100%;
+  max-width: 700px; 
+  height: auto;
   background: white;
   border-radius: 18px;
   overflow: hidden;
