@@ -1,14 +1,14 @@
 function login() {
-    let username = document.getElementById("username").value;
-    let role = document.getElementById("role").value;
+  const username = document.getElementById("username").value;
+  const role = document.getElementById("role").value;
 
-    if (username === "") {
-        alert("Please enter username");
-        return;
-    }
+  if (username === "") {
+    alert("Enter username");
+    return;
+  }
 
-    localStorage.setItem("user", username);
-    localStorage.setItem("role", role);
+  localStorage.setItem("username", username);
+  localStorage.setItem("role", role);
 
-    window.location.href = "dashboard.html";
+  window.location.href = "dashboard.html";
 }
