@@ -1,3 +1,83 @@
+/* LOGIN PAGE */
+
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT SIDE */
+.login-left {
+  flex: 1;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+.login-left h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.login-left p {
+  margin-bottom: 30px;
+  color: #94a3b8;
+}
+
+/* INPUTS */
+.login-left input,
+.login-left select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+/* BUTTON */
+.login-left button {
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-left button:hover {
+  background: #2563eb;
+}
+
+/* RIGHT SIDE */
+.login-right {
+  flex: 1;
+  background: linear-gradient(135deg, #1e3a8a, #9333ea);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TEXT OVERLAY */
+.overlay-text {
+  color: white;
+  text-align: center;
+}
+
+.overlay-text h2 {
+  font-size: 30px;
+}
+
+.overlay-text p {
+  margin-top: 10px;
+  color: #e0e7ff;
+}
+
 /* RESET */
 * {
   margin: 0;
