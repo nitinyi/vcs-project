@@ -5,111 +5,76 @@
   box-sizing: border-box;
 }
 
-/* BODY BACKGROUND */
+/* BODY */
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #1e3a8a, #9333ea);
-  min-height: 100vh;
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* LOGIN + DASHBOARD CONTAINER */
-.login-box, .dashboard {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  padding: 30px;
-  border-radius: 15px;
-  width: 380px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+/* MAIN CONTAINER */
+.container {
+  display: flex;
+  width: 800px;
+  height: 450px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
-/* DASHBOARD BIGGER */
-.dashboard {
-  width: 600px;
+/* LEFT SIDE */
+.left {
+  width: 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* HEADINGS */
-h1, h2, h3 {
+.left h1 {
+  margin-bottom: 10px;
+}
+
+.left p {
   margin-bottom: 20px;
+  color: gray;
 }
 
 /* INPUTS */
 input, select {
-  width: 100%;
   padding: 12px;
   margin: 10px 0;
   border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 14px;
+  border: 1px solid #ccc;
 }
 
 /* BUTTON */
 button {
-  width: 100%;
   padding: 12px;
-  margin-top: 12px;
+  margin-top: 15px;
   border: none;
   border-radius: 8px;
-  background: #2563eb;
+  background: #7c3aed;
   color: white;
-  font-size: 15px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-/* BUTTON HOVER */
 button:hover {
-  background: #1d4ed8;
-  transform: scale(1.03);
+  background: #5b21b6;
 }
 
-/* FILE LIST */
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 15px;
+/* RIGHT SIDE IMAGE */
+.right {
+  width: 50%;
 }
 
-/* FILE ITEM CARD */
-li {
-  background: rgba(255, 255, 255, 0.2);
-  margin: 10px 0;
-  padding: 12px;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 14px;
-}
-
-/* SMALL BUTTONS INSIDE LIST */
-li button {
-  width: auto;
-  margin-top: 8px;
-  margin-right: 5px;
-  padding: 6px 10px;
-  font-size: 12px;
-}
-
-/* LOGOUT BUTTON */
-button:last-child {
-  background: #ef4444;
-}
-
-button:last-child:hover {
-  background: #dc2626;
-}
-
-/* RESPONSIVE (MOBILE) */
-@media (max-width: 600px) {
-  .dashboard {
-    width: 90%;
-  }
-
-  .login-box {
-    width: 90%;
-  }
+.right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
