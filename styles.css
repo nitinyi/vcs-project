@@ -248,3 +248,41 @@ li {
   list-style: none;
   max-width: 500px;
 }
+/* RESPONSIVE FIX */
+
+/* Laptop / Desktop */
+@media (min-width: 1024px) {
+  .login-card {
+    width: 700px;
+    height: 380px;
+  }
+
+  .form-section {
+    padding: 40px;
+  }
+
+  .form-section h1 {
+    font-size: 28px;
+  }
+
+  .image-section img {
+    object-fit: cover;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+
+  .image-section {
+    height: 200px;
+  }
+
+  .form-section {
+    padding: 25px;
+  }
+}
