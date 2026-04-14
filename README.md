@@ -35,25 +35,7 @@ A modern and user-friendly **Course Version Control System** built using HTML, C
 
 ---
 
-## 🚀 Contribution 
 
-- Redesigned login page with modern UI  
-- Added gradient theme and improved spacing  
-- Created sidebar and top navigation layout  
-- Added animations and hover effects  
-- Improved overall user experience  
-
----
-
-## 🎯 Future Improvements
-
-- Search and filter functionality  
-- Dashboard analytics  
-- Folder-based file system  
-- Backend authentication  
-- Cloud storage integration  
-
----
 
 ## 💡 Note
 
