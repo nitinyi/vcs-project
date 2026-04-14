@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +6,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* BODY */
 body {
   background: #0f172a;
   color: white;
@@ -27,12 +29,12 @@ body {
 }
 
 .sidebar h2 {
-  margin-bottom: 20px;
+  font-size: 20px;
 }
 
 .sidebar button {
   margin-top: auto;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
   background: #ef4444;
@@ -40,7 +42,7 @@ body {
   cursor: pointer;
 }
 
-/* CONTENT */
+/* CONTENT AREA */
 .content {
   flex: 1;
   padding: 30px;
@@ -49,16 +51,17 @@ body {
 /* UPLOAD BOX */
 .upload-box {
   background: #1e293b;
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+  max-width: 500px;
 }
 
+/* INPUTS */
 input {
-  display: block;
+  width: 100%;
   margin: 10px 0;
   padding: 10px;
-  width: 100%;
   border-radius: 6px;
   border: none;
 }
@@ -80,4 +83,5 @@ li {
   padding: 15px;
   border-radius: 10px;
   list-style: none;
+  max-width: 500px;
 }
