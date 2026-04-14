@@ -3,47 +3,44 @@
 <head>
   <title>Dashboard - VCS</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="dashboard">
+<div class="main">
 
-  <h2><i class="fa-solid fa-folder"></i> Course Content System</h2>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>📁 VCS</h2>
 
-  <h3 id="welcome"></h3>
+    <p id="welcome"></p>
 
-  <!-- Upload Section -->
-  <div class="upload-box">
-
-    <input type="file" id="fileInput">
-
-    <input type="text" id="changeMsg" placeholder="Enter commit message">
-
-    <button onclick="upload()">
-      <i class="fa-solid fa-upload"></i> Upload New Version
+    <button onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
     </button>
-
   </div>
 
-  <!-- File List -->
-  <h3><i class="fa-solid fa-clock"></i> All File Versions</h3>
+  <!-- CONTENT -->
+  <div class="content">
 
-  <ul id="fileList"></ul>
+    <h2><i class="fa-solid fa-folder"></i> Files</h2>
 
-  <!-- Logout -->
-  <button class="logout-btn" onclick="logout()">
-    <i class="fa-solid fa-right-from-bracket"></i> Logout
-  </button>
+    <div class="upload-box">
+      <input type="file" id="fileInput">
+      <input type="text" id="changeMsg" placeholder="Enter commit message">
+
+      <button onclick="upload()">
+        <i class="fa-solid fa-upload"></i> Upload
+      </button>
+    </div>
+
+    <ul id="fileList"></ul>
+
+  </div>
 
 </div>
 
@@ -52,7 +49,7 @@
   let user = localStorage.getItem("user");
 
   document.getElementById("welcome").innerText =
-    `👋 Welcome ${user} (${role})`;
+    `👋 ${user} (${role})`;
 
   if (role === "student") {
     document.querySelector(".upload-box").style.display = "none";
@@ -65,15 +62,8 @@
     let file = fileInput.files[0];
     let changeMsg = document.getElementById("changeMsg").value;
 
-    if (!file) {
-      alert("Please select a file");
-      return;
-    }
-
-    if (changeMsg === "") {
-      alert("Please enter commit message");
-      return;
-    }
+    if (!file) return alert("Select file");
+    if (changeMsg === "") return alert("Enter message");
 
     let reader = new FileReader();
 
@@ -92,7 +82,6 @@
 
       files.push(newFile);
       localStorage.setItem("files", JSON.stringify(files));
-
       displayFiles();
 
       fileInput.value = "";
@@ -111,18 +100,12 @@
 
       li.innerHTML = `
         <b>${file.name}</b> (v${file.version})<br>
-        📝 ${file.message}<br>
-        👤 ${file.user}<br>
-        📅 ${file.date}<br>
+        ${file.message}<br>
+        ${file.user} • ${file.date}<br>
 
         <button onclick="downloadFile(${index})">
           <i class="fa-solid fa-download"></i> Download
         </button>
-
-        ${role === "teacher" ? `
-        <button onclick="deleteFile(${index})">
-          <i class="fa-solid fa-trash"></i> Delete
-        </button>` : ""}
       `;
 
       list.appendChild(li);
@@ -131,22 +114,14 @@
 
   function downloadFile(index) {
     let file = files[index];
-
     let a = document.createElement("a");
     a.href = file.data;
     a.download = file.name;
     a.click();
   }
 
-  function deleteFile(index) {
-    files.splice(index, 1);
-    localStorage.setItem("files", JSON.stringify(files));
-    displayFiles();
-  }
-
   function logout() {
-    localStorage.removeItem("user");
-    localStorage.removeItem("role");
+    localStorage.clear();
     window.location.href = "index.html";
   }
 
