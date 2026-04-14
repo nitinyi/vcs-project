@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard</title>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 
-<link rel="stylesheet" href="./styles.css?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
 <div class="main">
 
+  <!-- SIDEBAR -->
   <div class="sidebar">
-    <h2>📁 VCS</h2>
-    <p id="user"></p>
+    <h2><i class="fa fa-folder"></i> VCS</h2>
 
-    <button class="logout" onclick="logout()">Logout</button>
+    <p><i class="fa fa-user"></i> <span id="userDisplay"></span></p>
+
+    <button class="logout" onclick="logout()">
+      <i class="fa fa-right-from-bracket"></i> Logout
+    </button>
   </div>
 
+  <!-- CONTENT -->
   <div class="content">
-    <h2>📂 Files</h2>
 
-    <div class="card">
-      <p><strong>Sample_File.pdf</strong></p>
-      <p>Version 1</p>
-      <button>Download</button>
+    <h2><i class="fa fa-folder-open"></i> Files</h2>
+
+    <!-- Teacher Upload -->
+    <div id="uploadSection" class="file-card" style="display:none;">
+      <input type="file" id="fileInput">
+      <input type="text" id="commitMsg" placeholder="Enter commit message">
+      <button onclick="uploadFile()"><i class="fa fa-upload"></i> Upload</button>
     </div>
+
+    <!-- File List -->
+    <div id="fileList"></div>
+
   </div>
 
 </div>
-
-<script>
-document.getElementById("user").innerText =
-  "👋 " + localStorage.getItem("username") +
-  " (" + localStorage.getItem("role") + ")";
-
-function logout(){
-  window.location.href = "index.html";
-}
-</script>
 
 </body>
 </html>
