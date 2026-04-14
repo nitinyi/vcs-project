@@ -78,3 +78,37 @@ button:hover {
   height: 100%;
   object-fit: cover;
 }
+.dashboard {
+  width: 700px;
+  padding: 30px;
+}
+
+.upload-box {
+  background: rgba(255,255,255,0.15);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+li {
+  background: rgba(255,255,255,0.2);
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.logout-btn {
+  background: #ef4444;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
