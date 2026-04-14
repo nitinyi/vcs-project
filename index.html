@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Login - Course Version Control</title>
+  <title>Login - VCS</title>
 
   <link rel="stylesheet" href="styles.css">
-
-  <!-- ADD THIS LINE BELOW -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
 </head>
-    
+
 <body>
 
-    <div class="login-box">
-        <h2>Course Content Version Control</h2>
+<div class="container">
 
-        <input type="text" id="username" placeholder="Enter Username">
+  <!-- LEFT SIDE -->
+  <div class="left">
+    <h1>Hello Again!</h1>
+    <p>Welcome back to your Version Control System</p>
 
-        <select id="role">
-            <option value="student">Student</option>
-            <option value="teacher">Teacher</option>
-        </select>
+    <input type="text" id="username" placeholder="Enter Username">
 
-        <button onclick="login()">Login</button>
-    </div>
+    <select id="role">
+      <option value="student">Student</option>
+      <option value="teacher">Teacher</option>
+    </select>
 
-    <script src="script.js"></script>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- RIGHT SIDE (IMAGE) -->
+  <div class="right">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
-
 </html>
