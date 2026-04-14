@@ -1,132 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - VCS</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
+<!-- TOP BAR -->
+<div class="topbar">
+  <h3>IILM University</h3>
+  <span>Course Version Control System</span>
+</div>
+
+<!-- MAIN -->
 <div class="main">
 
   <!-- SIDEBAR -->
   <div class="sidebar">
-    <h2>📁 VCS</h2>
+    <div>
+      <h2><i class="fas fa-folder"></i> VCS</h2>
+      <p><i class="fas fa-user"></i> payal (student)</p>
+    </div>
 
-    <p id="welcome"></p>
-
-    <button onclick="logout()">
-      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    <button class="logout-btn">
+      <i class="fas fa-sign-out-alt"></i> Logout
     </button>
   </div>
 
   <!-- CONTENT -->
   <div class="content">
 
-    <h2><i class="fa-solid fa-folder"></i> Files</h2>
+    <h2><i class="fas fa-folder-open"></i> Files</h2>
 
-    <div class="upload-box">
-      <input type="file" id="fileInput">
-      <input type="text" id="changeMsg" placeholder="Enter commit message">
+    <!-- FILE CARD -->
+    <div class="file-card">
+      <h3>📄 SYNOPSIS_REPORT_VCS.pdf (v1)</h3>
+      <p>👤 payal</p>
+      <p>📅 14 April 2026</p>
 
-      <button onclick="upload()">
-        <i class="fa-solid fa-upload"></i> Upload
+      <button class="download-btn">
+        <i class="fas fa-download"></i> Download
       </button>
     </div>
 
-    <ul id="fileList"></ul>
+    <!-- UPLOAD SECTION -->
+    <div class="upload-box">
+      <input type="file">
+      <input type="text" placeholder="Enter commit message">
+
+      <button class="download-btn">
+        <i class="fas fa-upload"></i> Upload
+      </button>
+    </div>
 
   </div>
 
 </div>
-
-<script>
-  let role = localStorage.getItem("role");
-  let user = localStorage.getItem("user");
-
-  document.getElementById("welcome").innerText =
-    `👋 ${user} (${role})`;
-
-  if (role === "student") {
-    document.querySelector(".upload-box").style.display = "none";
-  }
-
-  let files = JSON.parse(localStorage.getItem("files")) || [];
-
-  function upload() {
-    let fileInput = document.getElementById("fileInput");
-    let file = fileInput.files[0];
-    let changeMsg = document.getElementById("changeMsg").value;
-
-    if (!file) return alert("Select file");
-    if (changeMsg === "") return alert("Enter message");
-
-    let reader = new FileReader();
-
-    reader.onload = function (e) {
-      let existing = files.filter(f => f.name === file.name);
-      let version = existing.length + 1;
-
-      let newFile = {
-        name: file.name,
-        version: version,
-        user: user,
-        date: new Date().toLocaleString(),
-        message: changeMsg,
-        data: e.target.result
-      };
-
-      files.push(newFile);
-      localStorage.setItem("files", JSON.stringify(files));
-      displayFiles();
-
-      fileInput.value = "";
-      document.getElementById("changeMsg").value = "";
-    };
-
-    reader.readAsDataURL(file);
-  }
-
-  function displayFiles() {
-    let list = document.getElementById("fileList");
-    list.innerHTML = "";
-
-    files.forEach((file, index) => {
-      let li = document.createElement("li");
-
-      li.innerHTML = `
-        <b>${file.name}</b> (v${file.version})<br>
-        ${file.message}<br>
-        ${file.user} • ${file.date}<br>
-
-        <button onclick="downloadFile(${index})">
-          <i class="fa-solid fa-download"></i> Download
-        </button>
-      `;
-
-      list.appendChild(li);
-    });
-  }
-
-  function downloadFile(index) {
-    let file = files[index];
-    let a = document.createElement("a");
-    a.href = file.data;
-    a.download = file.name;
-    a.click();
-  }
-
-  function logout() {
-    localStorage.clear();
-    window.location.href = "index.html";
-  }
-
-  displayFiles();
-</script>
 
 </body>
 </html>
