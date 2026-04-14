@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login - VCS</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>IILM VCS Login</title>
 
-  <!-- Google Font -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<div class="login-container">
+<div class="container">
 
-  <!-- LEFT SIDE -->
-  <div class="login-left">
-    <h1>Hello Again!</h1>
-    <p>Login to your VCS system</p>
+  <div class="login-card">
 
-    <input type="text" id="username" placeholder="Enter Username">
+    <!-- LEFT SIDE (FORM) -->
+    <div class="form-section">
+      <h1>IILM University</h1>
+      <p class="subtitle">Course Version Control System</p>
 
-    <select id="role">
-      <option value="student">Student</option>
-      <option value="teacher">Teacher</option>
-    </select>
+      <input type="text" id="username" placeholder="Enter Username">
 
-    <button onclick="login()">Login</button>
-  </div>
+      <select id="role">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
 
-  <!-- RIGHT SIDE -->
-  <div class="login-right">
-    <div class="overlay-text">
-      <h2>Version Control System</h2>
-      <p>Manage your files beautifully</p>
+      <button onclick="login()">Login</button>
     </div>
+
+    <!-- RIGHT SIDE (IMAGE) -->
+    <div class="image-section">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644" alt="university">
+    </div>
+
   </div>
 
 </div>
