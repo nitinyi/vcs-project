@@ -288,3 +288,14 @@ li {
     padding: 25px;
   }
 }
+.login-card {
+  transition: 0.3s;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+}
+
+button {
+  box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
+}
