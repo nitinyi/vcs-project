@@ -1,69 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - VCS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="./styles.css?v=3">
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <h3>IILM University</h3>
-  <span>Course Version Control System</span>
-</div>
-
-<!-- MAIN -->
 <div class="main">
 
-  <!-- SIDEBAR -->
   <div class="sidebar">
-    <div>
-      <h2><i class="fas fa-folder"></i> VCS</h2>
-      <p><i class="fas fa-user"></i> payal (student)</p>
-    </div>
+    <h2>📁 VCS</h2>
+    <p id="user"></p>
 
-    <button class="logout-btn">
-      <i class="fas fa-sign-out-alt"></i> Logout
-    </button>
+    <button class="logout" onclick="logout()">Logout</button>
   </div>
 
-  <!-- CONTENT -->
   <div class="content">
+    <h2>📂 Files</h2>
 
-    <h2><i class="fas fa-folder-open"></i> Files</h2>
-
-    <!-- FILE CARD -->
-    <div class="file-card">
-      <h3>📄 SYNOPSIS_REPORT_VCS.pdf (v1)</h3>
-      <p>👤 payal</p>
-      <p>📅 14 April 2026</p>
-
-      <button class="download-btn">
-        <i class="fas fa-download"></i> Download
-      </button>
+    <div class="card">
+      <p><strong>Sample_File.pdf</strong></p>
+      <p>Version 1</p>
+      <button>Download</button>
     </div>
-
-    <!-- UPLOAD SECTION -->
-    <div class="upload-box">
-      <input type="file">
-      <input type="text" placeholder="Enter commit message">
-
-      <button class="download-btn">
-        <i class="fas fa-upload"></i> Upload
-      </button>
-    </div>
-
   </div>
 
 </div>
+
+<script>
+document.getElementById("user").innerText =
+  "👋 " + localStorage.getItem("username") +
+  " (" + localStorage.getItem("role") + ")";
+
+function logout(){
+  window.location.href = "index.html";
+}
+</script>
 
 </body>
 </html>
