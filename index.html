@@ -2,41 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IILM University - Login</title>
+  <title>IILM VCS Login</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="./styles.css?v=3">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body>
+<body class="login-body">
 
 <div class="login-container">
 
-  <!-- LEFT SIDE -->
   <div class="login-box">
-    <h1>IILM University</h1>
-    <p>Course Version Control System</p>
 
-    <input type="text" id="username" placeholder="Enter Username">
+    <!-- LEFT -->
+    <div class="login-left">
+      <h1>IILM University</h1>
+      <p>Course Version Control System</p>
 
-    <select id="role">
-      <option value="student">Student</option>
-      <option value="teacher">Teacher</option>
-    </select>
+      <input type="text" id="username" placeholder="Enter Username">
 
-    <button onclick="login()">Login</button>
+      <select id="role">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+
+      <button onclick="login()">
+        <i class="fa fa-right-to-bracket"></i> Login
+      </button>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="login-right">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+    </div>
+
   </div>
 
-  <!-- RIGHT IMAGE -->
-  <div class="login-image"></div>
-
 </div>
-
-<script src="script.js"></script>
 
 </body>
 </html>
