@@ -35,7 +35,7 @@ A modern and user-friendly **Course Version Control System** built using HTML, C
 
 ---
 
-## 🚀 My Contribution (payal911tech)
+## 🚀 Contribution 
 
 - Redesigned login page with modern UI  
 - Added gradient theme and improved spacing  
@@ -52,16 +52,6 @@ A modern and user-friendly **Course Version Control System** built using HTML, C
 - Folder-based file system  
 - Backend authentication  
 - Cloud storage integration  
-
----
-
-## ⭐ Support
-
-If you like this project:
-
-- Star this repository  
-- Fork it  
-- Share it  
 
 ---
 
