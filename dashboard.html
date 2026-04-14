@@ -1,125 +1,157 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+  <title>Dashboard - VCS</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
 
-    <div class="dashboard">
-        <h2>Course Content System</h2>
+<div class="dashboard">
 
-        <h3 id="welcome"></h3>
+  <h2><i class="fa-solid fa-folder"></i> Course Content System</h2>
 
-        <div id="uploadSection">
-            <input type="file" id="fileInput">
-            <input type="text" id="changeMsg" placeholder="Enter commit message">
-            <button onclick="upload()">Upload New Version</button>
-        </div>
+  <h3 id="welcome"></h3>
 
-        <h3>All File Versions</h3>
-        <ul id="fileList"></ul>
+  <!-- Upload Section -->
+  <div class="upload-box">
 
-        <button onclick="logout()">Logout</button>
-    </div>
+    <input type="file" id="fileInput">
 
-    <script>
-        let role = localStorage.getItem("role");
-        let user = localStorage.getItem("user");
+    <input type="text" id="changeMsg" placeholder="Enter commit message">
 
-        document.getElementById("welcome").innerText = "Welcome " + user + " (" + role + ")";
+    <button onclick="upload()">
+      <i class="fa-solid fa-upload"></i> Upload New Version
+    </button>
 
+  </div>
 
-        if (role === "student") {
-            document.getElementById("uploadSection").style.display = "none";
-        }
+  <!-- File List -->
+  <h3><i class="fa-solid fa-clock"></i> All File Versions</h3>
 
+  <ul id="fileList"></ul>
 
-        let files = JSON.parse(localStorage.getItem("files")) || [];
+  <!-- Logout -->
+  <button class="logout-btn" onclick="logout()">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+  </button>
 
+</div>
 
-        function upload() {
-            let fileInput = document.getElementById("fileInput");
-            let file = fileInput.files[0];
-            let changeMsg = document.getElementById("changeMsg").value;
+<script>
+  let role = localStorage.getItem("role");
+  let user = localStorage.getItem("user");
 
-            if (!file) {
-                alert("Please select a file");
-                return;
-            }
-            if (changeMsg === "") {
-                alert("Please enter commit message");
-                return;
-            }
+  document.getElementById("welcome").innerText =
+    `👋 Welcome ${user} (${role})`;
 
-            let reader = new FileReader();
+  if (role === "student") {
+    document.querySelector(".upload-box").style.display = "none";
+  }
 
-            reader.onload = function (e) {
-                let existing = files.filter(f => f.name === file.name);
-                let version = existing.length + 1;
+  let files = JSON.parse(localStorage.getItem("files")) || [];
 
-                let newFile = {
-                    name: file.name,
-                    version: version,
-                    user: user,
-                    date: new Date().toLocaleString(),
-                    message: changeMsg,
-                    data: e.target.result
-                };
+  function upload() {
+    let fileInput = document.getElementById("fileInput");
+    let file = fileInput.files[0];
+    let changeMsg = document.getElementById("changeMsg").value;
 
-                files.push(newFile);
-                localStorage.setItem("files", JSON.stringify(files));
+    if (!file) {
+      alert("Please select a file");
+      return;
+    }
 
-                displayFiles();
-                document.getElementById("fileInput").value = "";
-                document.getElementById("changeMsg").value = "";
-            };
+    if (changeMsg === "") {
+      alert("Please enter commit message");
+      return;
+    }
 
-            reader.readAsDataURL(file);
-        }
+    let reader = new FileReader();
 
+    reader.onload = function (e) {
+      let existing = files.filter(f => f.name === file.name);
+      let version = existing.length + 1;
 
-        function displayFiles() {
-            let list = document.getElementById("fileList");
-            list.innerHTML = "";
+      let newFile = {
+        name: file.name,
+        version: version,
+        user: user,
+        date: new Date().toLocaleString(),
+        message: changeMsg,
+        data: e.target.result
+      };
 
-            files.forEach((file, index) => {
-                let li = document.createElement("li");
+      files.push(newFile);
+      localStorage.setItem("files", JSON.stringify(files));
 
-                li.innerHTML = `
-                    <b>${file.name}</b> (v${file.version})<br>
-                    📝 ${file.message}<br>
-                    Uploaded by: ${file.user}<br>
-                    ${file.date}<br>
-                    <button onclick="downloadFile(${index})">Download</button>
-                `;
+      displayFiles();
 
-                list.appendChild(li);
-            });
-        }
+      fileInput.value = "";
+      document.getElementById("changeMsg").value = "";
+    };
 
+    reader.readAsDataURL(file);
+  }
 
-        function downloadFile(index) {
-            let file = files[index];
+  function displayFiles() {
+    let list = document.getElementById("fileList");
+    list.innerHTML = "";
 
-            let a = document.createElement("a");
-            a.href = file.data;
-            a.download = file.name;
-            a.click();
-        }
+    files.forEach((file, index) => {
+      let li = document.createElement("li");
 
+      li.innerHTML = `
+        <b>${file.name}</b> (v${file.version})<br>
+        📝 ${file.message}<br>
+        👤 ${file.user}<br>
+        📅 ${file.date}<br>
 
-        function logout() {
-            localStorage.removeItem("user");
-            localStorage.removeItem("role");
-            window.location.href = "index.html";
-        }
+        <button onclick="downloadFile(${index})">
+          <i class="fa-solid fa-download"></i> Download
+        </button>
 
-        displayFiles();
-    </script>
+        ${role === "teacher" ? `
+        <button onclick="deleteFile(${index})">
+          <i class="fa-solid fa-trash"></i> Delete
+        </button>` : ""}
+      `;
+
+      list.appendChild(li);
+    });
+  }
+
+  function downloadFile(index) {
+    let file = files[index];
+
+    let a = document.createElement("a");
+    a.href = file.data;
+    a.download = file.name;
+    a.click();
+  }
+
+  function deleteFile(index) {
+    files.splice(index, 1);
+    localStorage.setItem("files", JSON.stringify(files));
+    displayFiles();
+  }
+
+  function logout() {
+    localStorage.removeItem("user");
+    localStorage.removeItem("role");
+    window.location.href = "index.html";
+  }
+
+  displayFiles();
+</script>
 
 </body>
-
 </html>
