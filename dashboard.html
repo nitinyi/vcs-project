@@ -5,16 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- JS -->
   <script defer src="script.js"></script>
 
-  <!-- Google Font (FIXED) -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -22,10 +16,8 @@
 
 <div class="main">
 
-  <!-- SIDEBAR -->
   <div class="sidebar">
     <h2><i class="fa fa-folder"></i> VCS</h2>
-
     <p><i class="fa fa-user"></i> <span id="userDisplay"></span></p>
 
     <button class="logout" onclick="logout()">
@@ -33,12 +25,10 @@
     </button>
   </div>
 
-  <!-- CONTENT -->
   <div class="content">
 
     <h2><i class="fa fa-folder-open"></i> Files</h2>
 
-    <!-- Upload (Teacher Only) -->
     <div id="uploadSection" class="file-card" style="display:none;">
       <input type="file" id="fileInput">
       <input type="text" id="commitMsg" placeholder="Enter commit message">
@@ -47,7 +37,6 @@
       </button>
     </div>
 
-    <!-- Files -->
     <div id="fileList"></div>
 
   </div>
