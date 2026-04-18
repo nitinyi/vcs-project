@@ -25,16 +25,6 @@ A modern and user-friendly **Course Version Control System** built using HTML, C
 
 ---
 
-## 📂 Project Structure
----
-
-## 👨‍💻 Contributors
-
-- nitinyi – Project Owner  
-- payal911tech – UI/UX Improvements & Frontend Enhancements  
-
----
-
 
 
 ## 💡 Note
