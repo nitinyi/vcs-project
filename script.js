@@ -23,6 +23,9 @@ function logout() {
 
 // ON LOAD
 window.onload = function () {
+  const isDashboard = window.location.pathname.includes("dashboard.html");
+  if (!isDashboard) return;  // ← ADD THESE TWO LINES
+
   const user = localStorage.getItem("user");
   const role = localStorage.getItem("role");
 
