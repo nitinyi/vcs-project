@@ -1,4 +1,4 @@
-# 🎓 Course Version Control System (VCS)
+Course Version Control System (VCS)
 
 A modern and user-friendly **Course Version Control System** built using HTML, CSS, and JavaScript.
 
@@ -6,18 +6,18 @@ A modern and user-friendly **Course Version Control System** built using HTML, C
 
 ---
 
-## ✨ Features
+Features
 
-- 🔐 Login system (Student / Teacher)
-- 📁 Upload and manage course files
-- 📜 File version tracking
-- ⬇️ Download previous versions
-- 🎨 Clean and modern UI design
-- 📱 Responsive design (mobile + desktop)
+-  Login system (Student / Teacher)
+-  Upload and manage course files
+-  File version tracking
+-  Download previous versions
+-  Clean and modern UI design
+-  Responsive design (mobile + desktop)
 
 ---
 
-## 🖥️ Tech Stack
+Tech Stack
 
 - HTML5  
 - CSS3  
