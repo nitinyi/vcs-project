@@ -71,7 +71,7 @@
   border: none;
   border-radius: 10px;
   background: linear-gradient(90deg, #ec4899, #8b5cf6);
-  color: white;
+  color: red;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
