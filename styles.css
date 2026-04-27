@@ -98,7 +98,7 @@
 .main {
   display: flex;
   height: 100vh;
-  background: #0f172a;
+  background: orange;
   color: red;
 }
 
