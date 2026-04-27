@@ -129,7 +129,7 @@
   padding: 12px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(90deg, #ef4444, #f97316);
+  background: orange;
   color: red;
   cursor: pointer;
   transition: 0.3s;
