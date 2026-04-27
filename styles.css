@@ -106,8 +106,9 @@
 .sidebar {
   width: 260px;
   padding: 25px;
-  background: orange;
+  background: white;
   display: flex;
+  color: orange;
   flex-direction: column;
   box-shadow: 4px 0 20px rgba(0,0,0,0.2);
 }
